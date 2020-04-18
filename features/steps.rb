@@ -4,7 +4,7 @@ def random_phrases
   phrases
 end
 
-Given("Login to Messenger and spam") do
+Given("I login to Messenger and spam") do
   visit "https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F" + "FRIENDS_NAME"
 
   find("//input[@id='email']").set("YOUR_EMAIL")
@@ -18,7 +18,7 @@ Given("Login to Messenger and spam") do
   end
 end
 
-Given("QR code in to WhatsApp web and spam") do
+Given("I QR code in to WhatsApp web and spam") do
   visit "https://web.whatsapp.com/"
   sleep 10
 
@@ -26,5 +26,25 @@ Given("QR code in to WhatsApp web and spam") do
   while
     find("//div[contains(@class,'copyable-text selectable-text') and @spellcheck]").send_keys(random_phrases.to_s)
     find("//span[@data-icon='send']").click
+  end
+end
+
+Given("I login to LinkedIn and spam") do
+  visit("https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin")
+
+  find("//input[@id='username']").set("YOUR_EMAIL")
+  find("//input[@id='password']").set("YOUR_PASSWORD")
+  find("//div[@class='login__form_action_container ']//button").click
+
+  if page.has_xpath?("//button[@class='secondary-action']")
+    find("//button[@class='secondary-action']", wait: 5).click
+  end
+
+  visit("https://www.linkedin.com/messaging/thread/USER_ID_NUMBER_HERE/")
+
+  while
+    find("//div[contains(@class,'form__contenteditable ')]").send_keys(random_phrases.to_s)
+    sleep 0.2
+    find("//button[contains(@class,'msg-form__send-button')]").click
   end
 end
