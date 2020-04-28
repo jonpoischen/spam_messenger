@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
@@ -31,13 +32,30 @@ GEM
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     diff-lcs (1.3)
+    faraday (0.17.3)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
+    faraday_middleware-parse_oj (0.3.2)
+      faraday (~> 0.9)
+      faraday_middleware (>= 0.9.1, < 1.0)
+      oj (>= 2.0, < 4.0)
     gherkin (5.1.0)
+    giphy (3.0.0)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
+      faraday_middleware-parse_oj (~> 0.3)
+      launchy (~> 2.4)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     multi_json (1.13.1)
     multi_test (0.1.2)
+    multipart-post (2.1.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
+    oj (3.10.6)
     parallel (1.17.0)
     parallel_tests (2.31.0)
       parallel
@@ -61,6 +79,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   cucumber
+  giphy
   parallel_tests
   random-word
   selenium-webdriver
