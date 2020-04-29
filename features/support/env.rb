@@ -1,8 +1,8 @@
 require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/cucumber'
-require 'random-word'
 require 'giphy'
+require 'quotable'
 
 
 $browser = ENV['browser'] ||:chrome
